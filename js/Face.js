@@ -1,6 +1,6 @@
 define(['exports'], function(exports) {
 	
-	var htmlCache = {};
+	var $ = jQuery, htmlCache = {};
 	
 	exports.Face = Backbone.View.extend({
 		
@@ -13,9 +13,9 @@ define(['exports'], function(exports) {
 		 */
 		getFace: function() {
 			
-			var $ = jQuery, deferred = $.Deferred(), face = this, faceUrl = face.getFaceUrl();
+			var deferred = $.Deferred(), face = this, faceUrl = face.getFaceUrl();
 			
-			if(!face.cached) {
+			if(!face.elCached) {
 				
 				if(htmlCache[faceUrl]) {
 					
@@ -39,7 +39,7 @@ define(['exports'], function(exports) {
 							
 							face.setElement(face.setupFace(html));
 							
-							face.cached = true;
+							face.elCached = true;
 							
 							deferred.resolve(face.$el);
 						},
@@ -69,6 +69,9 @@ define(['exports'], function(exports) {
 		},
 		
 		/**
+		 * Allows subclasses to manipulate HTML before it is added to the DOM e.g. if the HTML returned from the server
+		 * is a template that needs processing.
+		 * 
 		 * @param {String} html The raw HTML string from the server
 		 * @return {jQuery} A jQuery instance containing the face html
 		 */
