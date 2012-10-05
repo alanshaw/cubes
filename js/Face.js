@@ -1,5 +1,7 @@
 define(['exports'], function(exports) {
 	
+	var htmlCache = {};
+	
 	exports.Face = Backbone.View.extend({
 		
 		/**
@@ -15,22 +17,37 @@ define(['exports'], function(exports) {
 			
 			if(!face.cached) {
 				
-				console.log('Getting face ' + faceUrl);
-				
-				$.ajax(faceUrl, {
-					dataType: 'html',
-					success: function(html) {
-						
-						face.setElement(face.setupFace(html));
-						
-						face.cached = true;
-						
-						deferred.resolve(face.$el);
-					},
-					error: function() {
-						deferred.reject();
-					}
-				});
+				if(htmlCache[faceUrl]) {
+					
+					console.log('Setting up from cached ' + faceUrl);
+					
+					face.setElement(face.setupFace(htmlCache[faceUrl]));
+					
+					face.cached = true;
+					
+					deferred.resolve(face.$el);
+					
+				} else {
+					
+					console.log('Getting face from ' + faceUrl);
+					
+					$.ajax(faceUrl, {
+						dataType: 'html',
+						success: function(html) {
+							
+							htmlCache[faceUrl] = html;
+							
+							face.setElement(face.setupFace(html));
+							
+							face.cached = true;
+							
+							deferred.resolve(face.$el);
+						},
+						error: function() {
+							deferred.reject();
+						}
+					});
+				}
 				
 			} else {
 				
