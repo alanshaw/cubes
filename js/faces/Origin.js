@@ -1,6 +1,6 @@
-define(['./Login', './Register', 'exports'], function(login, register, exports) {
+define(['Face', './Login', './Register', 'exports'], function(face, login, register, exports) {
 	
-	var Origin = Backbone.View.extend({
+	exports.Origin = face.Face.extend({
 		
 		events: {
 			'click .login': 'onLoginClick',
@@ -9,18 +9,17 @@ define(['./Login', './Register', 'exports'], function(login, register, exports) 
 		
 		onLoginClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(login.Login.x, login.Login.y, 'down');
+			this.options.cube.spinTo(new login.Login({cube: this.options.cube}), 'down');
 		},
 		
 		onRegisterClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(register.Register.x, register.Register.y, 'up');
+			this.options.cube.spinTo(new register.Register({cube: this.options.cube}), 'up');
+		},
+		
+		getFaceUrl: function() {
+			return 'faces/1/0,0.html';
 		}
 	});
-	
-	Origin.x = 0;
-	Origin.y = 0;
-	
-	exports.Origin = Origin;
 });
 

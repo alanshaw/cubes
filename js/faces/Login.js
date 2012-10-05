@@ -1,6 +1,6 @@
-define(['./Welcome', './Origin', './Register', 'exports'], function(welcome, origin, register, exports) {
+define(['Face', './Welcome', './Origin', './Register', 'exports'], function(face, welcome, origin, register, exports) {
 	
-	var Login = Backbone.View.extend({
+	exports.Login = face.Face.extend({
 		
 		events: {
 			'click input[type=submit]': 'onLoginClick',
@@ -10,21 +10,20 @@ define(['./Welcome', './Origin', './Register', 'exports'], function(welcome, ori
 		
 		onLoginClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(welcome.Welcome.x, welcome.Welcome.y, 'left');
+			this.options.cube.spinTo(new welcome.Welcome({cube: this.options.cube}), 'left');
 		},
 		
 		onCancelClick: function(event) {
-			this.options.cube.spinTo(origin.Origin.x, origin.Origin.y, 'up');
+			this.options.cube.spinTo(new origin.Origin({cube: this.options.cube}), 'up');
 		},
 		
 		onRegisterClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(register.Register.x, register.Register.y, 'up');
+			this.options.cube.spinTo(new register.Register({cube: this.options.cube}), 'up');
+		},
+		
+		getFaceUrl: function() {
+			return 'faces/1/0,1.html';
 		}
 	});
-	
-	Login.x = 0;
-	Login.y = 1;
-	
-	exports.Login = Login;
 });

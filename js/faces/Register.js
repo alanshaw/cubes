@@ -1,6 +1,6 @@
-define(['./Welcome', './Origin', 'exports'], function(welcome, origin, exports) {
+define(['Face', './Welcome', './Origin', 'exports'], function(face, welcome, origin, exports) {
 	
-	var Register = Backbone.View.extend({
+	exports.Register = face.Face.extend({
 		
 		events: {
 			'click input[type=submit]': 'onRegisterClick',
@@ -9,16 +9,15 @@ define(['./Welcome', './Origin', 'exports'], function(welcome, origin, exports) 
 		
 		onRegisterClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(welcome.Welcome.x, welcome.Welcome.y, 'left');
+			this.options.cube.spinTo(new welcome.Welcome({cube: this.options.cube}), 'left');
 		},
 		
 		onCancelClick: function(event) {
-			this.options.cube.spinTo(origin.Origin.x, origin.Origin.y, 'down');
+			this.options.cube.spinTo(new origin.Origin({cube: this.options.cube}), 'down');
+		},
+		
+		getFaceUrl: function() {
+			return 'faces/1/0,-1.html';
 		}
 	});
-	
-	Register.x = 0;
-	Register.y = -1;
-	
-	exports.Register = Register;
 });

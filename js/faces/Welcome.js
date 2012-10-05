@@ -1,6 +1,6 @@
-define(['./Login', 'exports'], function(login, exports) {
+define(['Face', './Login', 'exports'], function(face, login, exports) {
 	
-	var Welcome = Backbone.View.extend({
+	exports.Welcome = face.Face.extend({
 		
 		events: {
 			'click .logout': 'onLogoutClick'
@@ -8,12 +8,11 @@ define(['./Login', 'exports'], function(login, exports) {
 		
 		onLogoutClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(login.Login.x, login.Login.y, 'right');
+			this.options.cube.spinTo(new login.Login({cube: this.options.cube}), 'right');
+		},
+		
+		getFaceUrl: function() {
+			return 'faces/1/1,1.html';
 		}
 	});
-	
-	Welcome.x = 1;
-	Welcome.y = 1;
-	
-	exports.Welcome = Welcome;
 });
