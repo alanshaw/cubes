@@ -8,7 +8,7 @@
  * show - after a face has been animated onscreen
  * hide - after a face has been animated offscreen
  */
-define(function() {
+define(function(require, exports) {
 	
 	var Cube = Backbone.View.extend({
 		
@@ -221,5 +221,5 @@ define(function() {
 		right: 'left'
 	};
 	
-	return Cube;
+	exports.Cube = Cube;
 });

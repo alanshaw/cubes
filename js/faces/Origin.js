@@ -1,4 +1,4 @@
-define(['Login', 'Register'], function(Login, Register) {
+define(['./Login', './Register', 'exports'], function(login, register, exports) {
 	
 	var Origin = Backbone.View.extend({
 		
@@ -9,18 +9,18 @@ define(['Login', 'Register'], function(Login, Register) {
 		
 		onLoginClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(Login.x, Login.y, 'down');
+			this.options.cube.spinTo(login.Login.x, login.Login.y, 'down');
 		},
 		
 		onRegisterClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(Register.x, Register.y, 'up');
+			this.options.cube.spinTo(register.Register.x, register.Register.y, 'up');
 		}
 	});
 	
 	Origin.x = 0;
 	Origin.y = 0;
 	
-	return Origin;
+	exports.Origin = Origin;
 });
 

@@ -1,4 +1,4 @@
-define(['Welcome', 'Origin'], function(Welcome, Origin) {
+define(['./Welcome', './Origin', 'exports'], function(welcome, origin, exports) {
 	
 	var Register = Backbone.View.extend({
 		
@@ -9,16 +9,16 @@ define(['Welcome', 'Origin'], function(Welcome, Origin) {
 		
 		onRegisterClick: function(event) {
 			event.preventDefault();
-			this.options.cube.spinTo(Welcome.x, Welcome.y, 'left');
+			this.options.cube.spinTo(welcome.Welcome.x, welcome.Welcome.y, 'left');
 		},
 		
 		onCancelClick: function(event) {
-			this.options.cube.spinTo(Origin.x, Origin.y, 'down');
+			this.options.cube.spinTo(origin.Origin.x, origin.Origin.y, 'down');
 		}
 	});
 	
 	Register.x = 0;
 	Register.y = -1;
 	
-	return Register;
+	exports.Register = Register;
 });
