@@ -1,4 +1,4 @@
-requirejs(['Cube', 'faces/Origin', 'faces/BidHistory'], function(cube, origin, bidHistory) {
+requirejs(['Cube', 'faces/Origin', 'faces/BidHistory', 'faces/VehicleSummary'], function(cube, origin, bidHistory, vehicleSummary) {
 	
 	var $ = jQuery, cube1 = new cube.Cube({el: $('#cube-1')});
 	
@@ -7,5 +7,13 @@ requirejs(['Cube', 'faces/Origin', 'faces/BidHistory'], function(cube, origin, b
 	var cube2 = new cube.Cube({el: $('#cube-2')});
 	
 	cube2.spinTo(new bidHistory.BidHistory({cube: cube2}));
+	
+	var cube3 = new cube.Cube({el: $('#cube-3')});
+	
+	cube3.spinTo(new vehicleSummary.VehicleSummary({cube: cube3}));
+	
+	var cube4 = new cube.Cube({el: $('#cube-4')});
+	
+	cube4.spinTo(new bidHistory.BidHistory({cube: cube4}));
 	
 });

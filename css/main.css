@@ -93,6 +93,27 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body {
+	background: url(../img/bg/main.gif);
+	margin: 50px auto;
+	width: 860px;
+	height: 860px;
+	position: relative;
+}
+a {
+	color: #45474f;
+	text-decoration: none;
+}
+a:visited {
+	color: #50525c;
+}
+a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+h1:first-child {
+	margin-top: 0;
+}
 
 .cube-container {
   width: 400px;
@@ -204,31 +225,31 @@ textarea {
     backface-visibility: hidden;
 }
 
-.cube .front  {
+.cube > .front  {
   -webkit-transform: translateZ( 200px );
      -moz-transform: translateZ( 200px );
        -o-transform: translateZ( 200px );
           transform: translateZ( 200px );
 }
-.cube .right {
+.cube > .right {
   -webkit-transform: rotateY(   90deg ) translateZ( 200px );
      -moz-transform: rotateY(   90deg ) translateZ( 200px );
        -o-transform: rotateY(   90deg ) translateZ( 200px );
           transform: rotateY(   90deg ) translateZ( 200px );
 }
-.cube .left {
+.cube > .left {
   -webkit-transform: rotateY(  -90deg ) translateZ( 200px );
      -moz-transform: rotateY(  -90deg ) translateZ( 200px );
        -o-transform: rotateY(  -90deg ) translateZ( 200px );
           transform: rotateY(  -90deg ) translateZ( 200px );
 }
-.cube .top {
+.cube > .top {
   -webkit-transform: rotateX(   90deg ) translateZ( 200px );
      -moz-transform: rotateX(   90deg ) translateZ( 200px );
        -o-transform: rotateX(   90deg ) translateZ( 200px );
           transform: rotateX(   90deg ) translateZ( 200px );
 }
-.cube .bottom {
+.cube > .bottom {
   -webkit-transform: rotateX(  -90deg ) translateZ( 200px );
      -moz-transform: rotateX(  -90deg ) translateZ( 200px );
        -o-transform: rotateX(  -90deg ) translateZ( 200px );
@@ -245,38 +266,25 @@ textarea {
   left: 0;
 }
 
-
-
-
-body {
-	background: url(../img/bg/main.gif);
-	margin: 0 auto;
-	width: 860px;
-	position: relative;
-}
-a {
-	color: #45474f;
-	text-decoration: none;
-}
-a:visited {
-	color: #50525c;
-}
-a:hover {
-	color: #000;
-	text-decoration: underline;
-}
-h1:first-child {
-	margin-top: 0;
-}
 #cube-container-1 {
 	position: absolute;
-	top: 50px;
+	top: 0;
 	left: 0;
 }
 #cube-container-2 {
 	position: absolute;
-	top: 50px;
+	top: 0;
 	right: 0;
+}
+#cube-container-3 {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#cube-container-4 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 .face {
   padding: 1em;
@@ -284,6 +292,65 @@ h1:first-child {
 .face label {
   display: block;
   margin: 0.5em 0;
+}
+.face nav, .face nav ul, .face nav li {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.face nav li a {
+	position: absolute;
+	background: #f7f7f7 none no-repeat scroll center center;
+	opacity: 0;
+	-moz-transition: opacity 0.25s ease-in;
+	-o-transition: opacity 0.25s ease-in;
+	-webkit-transition: opacity 0.25s ease-in;
+	transition: opacity 0.25s ease-in;
+	-moz-transition-delay: 0.25s;
+	-o-transition-delay: 0.25s;
+	-webkit-transition-delay: 0.25s;
+	transition-delay: 0.25s;
+	text-indent: -999em;
+	box-shadow: 0 0 3px #666;
+}
+.face nav li a:hover {
+	background-color: #f2f2f2;
+}
+.cube:hover .face nav li a {
+	opacity: 0.8;
+}
+.face nav .top a {
+	background-image: url(../img/icon/arrow-up.png);
+	top: 0;
+	left: 0;
+	margin: 0 40%;
+	width: 20%;
+	height: 2em;
+}
+.face nav .right a {
+	background-image: url(../img/icon/arrow-right.png);
+	top: 0;
+	right: 0;
+	margin: 40% 0;
+	width: 2em;
+	height: 20%;
+}
+.face nav .bottom a {
+	background-image: url(../img/icon/arrow-down.png);
+	left: 0;
+	bottom: 0;
+	margin: 0 40%;
+	width: 20%;
+	height: 2em;
+}
+.face nav .left a {
+	background-image: url(../img/icon/arrow-left.png);
+	top: 0;
+	left: 0;
+	margin: 40% 0;
+	width: 2em;
+	height: 20%;
 }
 #face-origin {
 	padding-top: 7em;
