@@ -18,7 +18,7 @@ define(['Face', './Login', './Register', 'exports'], function(face, login, regis
 		},
 		
 		getFaceUrl: function() {
-			return 'faces/1/0,0.html';
+			return 'faces/Origin.html';
 		}
 	});
 });

@@ -12,7 +12,7 @@ define(['Face', './Login', 'exports'], function(face, login, exports) {
 		},
 		
 		getFaceUrl: function() {
-			return 'faces/1/1,1.html';
+			return 'faces/Welcome.html';
 		}
 	});
 });

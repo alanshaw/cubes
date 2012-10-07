@@ -23,7 +23,7 @@ define(['Face', './Welcome', './Origin', './Register', 'exports'], function(face
 		},
 		
 		getFaceUrl: function() {
-			return 'faces/1/0,1.html';
+			return 'faces/Login.html';
 		}
 	});
 });

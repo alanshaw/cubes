@@ -19,7 +19,7 @@ define(['Face', 'exports'], function(face, exports) {
 		},
 		
 		getFaceUrl: function() {
-			return 'faces/2/' + this.options.i + ',0.html';
+			return 'faces/BidHistory' + this.options.i + '.html';
 		}
 	});
 });
