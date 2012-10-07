@@ -317,6 +317,9 @@ h1:first-child {
 .face nav li a:hover {
 	background-color: #f2f2f2;
 }
+.face nav li a:focus {
+	outline: none;
+}
 .cube:hover .face nav li a {
 	opacity: 0.8;
 }
@@ -368,6 +371,10 @@ h1:first-child {
 }
 #face-welcome .logout {
 	float: right;
+}
+#face-vehicle-summary dt {
+	float: left;
+	width: 35%;
 }
 
 
